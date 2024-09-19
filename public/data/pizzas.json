@@ -1,0 +1,14 @@
+{
+    "Cheese":{
+        "Price":50,
+        "Description":"YAABABABABABA"
+    },
+    "Bacon":{
+        "Price":40,
+        "Description": "LOREM IPSUM"
+    },
+    "Pepperoni":{
+        "Price":45,
+        "Description": ":)"
+    }
+}

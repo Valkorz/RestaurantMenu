@@ -2,4 +2,78 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
+    --foreground-color-global: rgb(255,255,255);
+    --foreground-color-global-2: rgb(239, 239, 240);
+    --background-color-global: rgb(197, 203, 223);
+
+}
+
+
+header{
+    position: fixed;
+    display: flex;
+    height: 100px;
+    width: 100%;
+
+    background-color: var(--foreground-color-global);
+    z-index: 1000;
+
+}
+
+.content{
+    position: relative;
+    background-color: var(--background-color-global);
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
+}
+
+.itemCard{
+    width: 250px;
+    height: 300px;
+    border-radius: 20%;
+    background-color: var(--foreground-color-global);
+
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 3px 3px rgba(0,0,0,0.6);
+}
+
+.itemCard img{
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+    position: absolute;
+    /* transform: translate(0, -40%); */
+}
+
+.itemCardFooter{
+    width: 100%;
+    height: 50%;
+    background-color: var(--foreground-color-global);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: absolute;
+    z-index: 600;
+}
+
+.itemCardFooter:hover{
+    background-color: var(--foreground-color-global-2);
+}
+
+.itemCard:hover{
+    background-color: var(--foreground-color-global-2);
+    cursor:pointer
 }
