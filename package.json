@@ -1,0 +1,30 @@
+{
+  "name": "restaurantmenu",
+  "version": "1.0.0",
+  "description": "A restaurant menu website",
+  "main": "server.js",
+  "scripts": {
+    "test": "start",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valkorz/RestaurantMenu.git"
+  },
+  "keywords": [
+    "restaurant",
+    "food",
+    "menu",
+    "website",
+    "express"
+  ],
+  "author": "Vittorio Pivarci",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/valkorz/RestaurantMenu/issues"
+  },
+  "homepage": "https://github.com/valkorz/RestaurantMenu#readme",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
