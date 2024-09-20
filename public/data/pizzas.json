@@ -1,14 +1,20 @@
-{
-    "Cheese":{
-        "Price":50,
-        "Description":"YAABABABABABA"
+[
+    {
+        "name": "Queijo",
+        "imgSrc": "media/cheesepizza.jpg",
+        "description": "Delicious cheese pizza",
+        "price": "R$ 42,50"
     },
-    "Bacon":{
-        "Price":40,
-        "Description": "LOREM IPSUM"
+    {
+        "name": "Marguerita",
+        "imgSrc": "media/marguerita.jpg",
+        "description": "Classic marguerita pizza",
+        "price": "R$ 38,00"
     },
-    "Pepperoni":{
-        "Price":45,
-        "Description": ":)"
+    {
+        "name": "Bacon",
+        "imgSrc": "media/bacon.png",
+        "description": "Crispy bacon pizza",
+        "price": "R$ 35,99"
     }
-}
+]
