@@ -1,17 +1,20 @@
 [
     {
+        "id":0,
         "name": "Queijo",
         "imgSrc": "media/cheesepizza.jpg",
         "description": "Delicious cheese pizza",
         "price": "R$ 42,50"
     },
     {
+        "id":1,
         "name": "Marguerita",
         "imgSrc": "media/marguerita.jpg",
         "description": "Classic marguerita pizza",
         "price": "R$ 38,00"
     },
     {
+        "id":2,
         "name": "Bacon",
         "imgSrc": "media/bacon.png",
         "description": "Crispy bacon pizza",

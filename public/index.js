@@ -1,6 +1,21 @@
 
+
+
 //handle custom properties of the item card class
 document.addEventListener('DOMContentLoaded', function() {
+    localStorage.removeItem('orderList');
+    const checkout = document.getElementById('checkout');
+    const checkoutTab = document.getElementById('priceTable');
+    const checkoutButton = checkout.querySelector('button');
+    checkoutButton.addEventListener('click', () => {
+        if(checkoutTab.style.visibility == "hidden"){
+            checkoutTab.style.visibility = "visible";
+            checkoutTab.style.transform = "translate(0,0)";
+        } else{
+            checkoutTab.style.visibility = "hidden";
+            checkoutTab.style.transform = "translate(0,0)";
+        }
+    })
 
     fetch('data/pizzas.json')
         .then(response => response.json())
@@ -26,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 const button = itemCard.querySelector('button');
                 button.addEventListener('click', () => {
-                    alert(`Button clicked for ${pizza.name}`);
+                    addToOrder(pizza);
                 })
             });
         })
@@ -41,3 +56,46 @@ document.addEventListener('DOMContentLoaded', function() {
     //     }
     // })
 })
+
+//Adds pizza to local storage order.
+function addToOrder(pizza){
+    let orderList = JSON.parse(localStorage.getItem('orderList')) || [];
+    orderList.push(pizza);
+    localStorage.setItem('orderList', JSON.stringify(orderList));
+    updateOrderList();
+}
+
+function removeFromOrder(pizza){
+    let orderList = JSON.parse(localStorage.getItem('orderList')) || [];
+    try{
+        orderList.pop(pizza);
+        localStorage.setItem('orderList', JSON.stringify(orderList));
+        updateOrderList();
+    } catch (exception){
+        alert(`Error while popping from list: ${exception}`);
+    }
+}
+
+function updateOrderList(){
+    const orderContainer = document.getElementById('priceTable');
+    orderContainer.innerHTML = '';
+
+    let orderList = JSON.parse(localStorage.getItem('orderList')) || [];
+    orderList.forEach(pizza => {
+        const checkoutItem = document.createElement('div');
+        checkoutItem.className = 'checkoutItem';
+        checkoutItem.innerHTML = `
+            <img src="${pizza.imgSrc}">
+            <h5>${pizza.name}</h5>
+            <div id="count">1</div>
+            <button>
+                <img src="media/icons/cancel.png">
+            </button>
+        `;
+        const button = checkoutItem.querySelector('button');
+        button.addEventListener('click', () => {
+            removeFromOrder(pizza);
+        });
+        orderContainer.appendChild(checkoutItem);
+    })
+}
