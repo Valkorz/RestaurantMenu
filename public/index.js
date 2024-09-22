@@ -8,13 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const checkoutTab = document.getElementById('priceTable');
     const checkoutButton = checkout.querySelector('button');
     checkoutButton.addEventListener('click', () => {
-        if(checkoutTab.style.visibility == "hidden"){
-            checkoutTab.style.visibility = "visible";
-            checkoutTab.style.transform = "translate(0,0)";
-        } else{
-            checkoutTab.style.visibility = "hidden";
-            checkoutTab.style.transform = "translate(0,0)";
-        }
+        checkoutTab.classList.toggle('visible');
     })
 
     fetch('data/pizzas.json')
@@ -25,15 +19,25 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error fetching the JSON data:', error));
 
-    // const itemCards = document.querySelectorAll('.itemCard');
-    // itemCards.forEach(card => {
-    //     const imgSrc = card.getAttribute('img-src');
-    //     const imgElement = card.querySelector('img');
-    //     if(imgElement && imgSrc){
-    //         imgElement.src = imgSrc;
-    //     }
-    // })
-})
+    const menuButton = document.getElementById('menu');
+    const menuCurtain = document.querySelector('.menuCurtain');
+
+    menuButton.addEventListener('click', function(){
+        menuCurtain.classList.toggle('visible');
+    });
+
+
+    const buttonList = document.querySelectorAll('button');
+    buttonList.forEach(btn => {
+        btn.addEventListener('click', function(){
+            btn.classList.add('animate-button');
+
+            btn.addEventListener('animationend', function(){
+                btn.classList.remove('animate-button');
+            }, {once: true});
+        })
+    });
+});
 
 function addCards(targetContainer, items){
     items.forEach(item => {
@@ -126,6 +130,12 @@ function updateOrderList(){
         const button = checkoutItem.querySelector('button');
         button.addEventListener('click', () => {
             removeFromOrder(pizza);
+
+            button.classList.add('animate-button');
+
+            button.addEventListener('animationend', function(){
+                button.classList.remove('animate-button');
+            }, {once: true});
         });
         orderContainer.appendChild(checkoutItem);
     })

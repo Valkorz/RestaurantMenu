@@ -78,7 +78,7 @@ h1, h2, h3{
     border: none;
     outline: none;
 
-    left: 2%
+    left: 2%;
 }
 
 #menu:hover{
@@ -159,6 +159,34 @@ table{
     scrollbar-width: none;
 }
 
+.menuCurtain{
+    position: fixed;
+    width: 400px;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--background-color-global);
+    z-index: 800;
+
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+
+    transform: translate(-100%,0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.menuCurtain.visible{
+    transform: translate(0,0);
+}
+
+.menuCurtain #curtainHeader{
+    position: absolute;
+    width: 100%;
+    height: 400px;
+}
+
 #list{
     position: absolute;
     display: flex;
@@ -176,6 +204,7 @@ table{
 
 #priceTable{
     position: absolute;
+    visibility: visible;
     background-color: var(--foreground-color-global-2);
     transform: translate(100%, 0);
 
@@ -351,6 +380,7 @@ table{
     align-items: center;
     background-color: var(--foreground-color-global-3);
     border-radius: 50%;
+    color: white;
     text-shadow: var(--text-shadow);
     
     right: 94%;
@@ -420,7 +450,12 @@ table{
 /* For Mobile */
 @media screen and (max-width: 1080px) {
     #priceTable{
-        visibility: hidden;
+        transform: translate(0,-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    #priceTable.visible{
+        transform: translate(0,0%);
     }
 
     .content{
@@ -430,11 +465,30 @@ table{
     .checkoutTab{
         visibility: visible;
     }
+
+    #logoText{
+        left: 80%;
+    }
 }
 
 @media screen and (min-width: 1081px){
     #priceTable{
-        transform: translate(100%,0);
-        visibility: visible;
+        transform: translate(100%,0);  
     }
+}
+
+@keyframes buttonClickAnimation{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.animate-button{
+    animation: buttonClickAnimation 0.3s ease-in-out;
 }
