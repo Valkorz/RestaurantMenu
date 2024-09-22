@@ -19,6 +19,30 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error fetching the JSON data:', error));
 
+    fetch('data/pizzasDoces.json')
+        .then(response => response.json())
+        .then(pizzaFlavors => {
+            const pizzaContainer = document.getElementById('pizzaContainer2');
+            addCards(pizzaContainer, pizzaFlavors);
+        })
+        .catch(error => console.error('Error fetching the JSON data:', error));
+    
+    fetch('data/burgers.json')
+        .then(response => response.json())
+        .then(pizzaFlavors => {
+            const pizzaContainer = document.getElementById('burgersContainer');
+            addCards(pizzaContainer, pizzaFlavors);
+        })
+        .catch(error => console.error('Error fetching the JSON data:', error));
+
+    fetch('data/drinks.json')
+        .then(response => response.json())
+        .then(pizzaFlavors => {
+            const pizzaContainer = document.getElementById('drinksContainer');
+            addCards(pizzaContainer, pizzaFlavors);
+        })
+        .catch(error => console.error('Error fetching the JSON data:', error));
+
     const menuButton = document.getElementById('menu');
     const menuCurtain = document.querySelector('.menuCurtain');
 

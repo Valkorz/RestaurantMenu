@@ -1,0 +1,42 @@
+[
+    {
+        "id":13,
+        "name": "Suco natural (300mL)",
+        "imgSrc": "media/sucos.jpg",
+        "description": "Sucos naturais. Temos: Laranja, Uva, Morango e Abacaxi.",
+        "price": "8.00",
+        "count" : 1
+    },
+    {
+        "id":14,
+        "name": "Heineken (269mL)",
+        "imgSrc": "media/cerveja1.png",
+        "description": "Heineken",
+        "price": "3.99",
+        "count" : 1
+    },
+    {
+        "id":15,
+        "name": "Amstel (269mL)",
+        "imgSrc": "media/cerveja2.png",
+        "description": "Amstel",
+        "price": "2.99",
+        "count" : 1
+    },
+    {
+        "id":16,
+        "name": "Antarctica garrafa (300mL)",
+        "imgSrc": "media/cerveja3.webp",
+        "description": "Favor retornar a garrafa",
+        "price": "2.99",
+        "count": 1
+    },
+    {
+        "id": 17,
+        "name": "Água Mineral sem Gás (510mL)",
+        "imgSrc": "media/agua.png",
+        "description": "Pureza vital",
+        "price":"1.29",
+        "count":1
+    }
+]

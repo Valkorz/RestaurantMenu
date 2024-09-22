@@ -3,7 +3,7 @@
         "id":0,
         "name": "Queijo",
         "imgSrc": "media/cheesepizza.jpg",
-        "description": "Delicious cheese pizza",
+        "description": "Com os melhores queijos da casa",
         "price": "42.50",
         "count" : 1
     },
@@ -11,7 +11,7 @@
         "id":1,
         "name": "Marguerita",
         "imgSrc": "media/marguerita.jpg",
-        "description": "Classic marguerita pizza",
+        "description": "Clássica pizza de Marguerita",
         "price": "38.00",
         "count" : 1
     },
@@ -19,8 +19,24 @@
         "id":2,
         "name": "Bacon",
         "imgSrc": "media/bacon.png",
-        "description": "Crispy bacon pizza",
+        "description": "Pizza de Bacon crocante com cobertura de Catupiry",
         "price": "35.99",
         "count" : 1
+    },
+    {
+        "id":3,
+        "name": "Calabresa",
+        "imgSrc": "media/calabresaequeijo.jpg",
+        "description": "Pizza de calabresa e dois queijos",
+        "price": "39.99",
+        "count": 1
+    },
+    {
+        "id": 4,
+        "name": "Pepperoni",
+        "imgSrc": "media/pepperonipizza.jpg",
+        "description": "Pizza de pepperoni estilo americana",
+        "price":"34.50",
+        "count":1
     }
 ]

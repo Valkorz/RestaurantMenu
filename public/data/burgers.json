@@ -1,0 +1,34 @@
+[
+    {
+        "id":9,
+        "name": "Cheddar",
+        "imgSrc": "media/cheeseburger.jpg",
+        "description": "O popular cheeseburger americano",
+        "price": "15.00",
+        "count" : 1
+    },
+    {
+        "id":10,
+        "name": "Grandão",
+        "imgSrc": "media/bigboy.jpg",
+        "description": "Grande grosso e saboroso do jeito q elas gostam",
+        "price": "25.00",
+        "count" : 1
+    },
+    {
+        "id":11,
+        "name": "Super Cheddar",
+        "imgSrc": "media/triplocheddar.png",
+        "description": "Maior e mais potente",
+        "price": "26.99",
+        "count" : 1
+    },
+    {
+        "id":12,
+        "name": "Paizão",
+        "imgSrc": "media/grandao.jpg",
+        "description": "Boa sorte",
+        "price": "57.90",
+        "count": 1
+    }
+]
