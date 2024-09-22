@@ -26,6 +26,11 @@ document.addEventListener('DOMContentLoaded', function() {
         menuCurtain.classList.toggle('visible');
     });
 
+    const proceedButton = document.getElementById('proceedButton');
+    proceedButton.addEventListener('click', function(){
+        window.location.href = 'pages/checkout.html';
+    });
+
 
     const buttonList = document.querySelectorAll('button');
     buttonList.forEach(btn => {
@@ -36,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 btn.classList.remove('animate-button');
             }, {once: true});
         })
-    });
+    });  
 });
 
 function addCards(targetContainer, items){
@@ -45,7 +50,7 @@ function addCards(targetContainer, items){
         itemCard.className = 'itemCard';
         itemCard.setAttribute('img-src', item.imgSrc);
         itemCard.innerHTML = `
-            <h3 id="name">${item.name}</h3>
+            <h2 id="name">${item.name}</h2>
             <img alt=${item.name} src=${item.imgSrc}>
             <div class="itemCardFooter">
                 <h5 id="description">${item.description}<h5>
@@ -121,7 +126,7 @@ function updateOrderList(){
         checkoutItem.className = 'checkoutItem';
         checkoutItem.innerHTML = `
             <img src="${pizza.imgSrc}">
-            <h5>${pizza.name}</h5>
+            <h2>${pizza.name}</h2>
             <div id="count">${pizza.count}</div>
             <button>
                 <img src="media/icons/cancel.png">

@@ -1,0 +1,164 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    --foreground-color-global: rgb(255,255,255);
+    --foreground-color-global-2: rgb(239, 239, 240);
+    --foreground-color-global-3: rgb(255, 162, 39);
+    --foreground-color-global-4: #fd4618;
+    --background-color-global: whitesmoke;
+
+    --text-shadow: 
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    scrollbar-width: none;
+
+    overflow-y: scroll;
+
+
+}
+
+
+.roboto-mono-p {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.bebas-neue-regular {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+header{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    gap:15px;
+    height: 80px;
+    width: 100%;
+
+    background-color: var(--foreground-color-global-3);
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.25);
+    z-index: 1000;
+
+    align-items: center;
+    justify-content: center;
+
+}
+
+h1, h2{
+    z-index: 1010;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 200%;
+    font-weight: 100;
+}
+
+h3{
+    z-index: 1010;
+    font-family: 'Roboto Mono' , sans-serif;
+    font-size: large;
+}
+
+h4, h5, p, li{
+    z-index: 1010;
+    font-family: 'Roboto Mono' , sans-serif;
+    font-size: medium;
+}
+
+#menu{
+    display: flex;
+    position: absolute;
+
+    width: 32px;
+    height: 32px;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0,0,0,0);
+    border: none;
+    outline: none;
+
+    left: 2%;
+}
+
+#menu:hover{
+    cursor: pointer;
+}
+
+#logotext{
+    position: absolute;
+    width: 120px;
+    height: 60px;
+
+    left: 90%;
+}
+
+.bodyContent{
+    position:  relative;
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+
+    overflow-y: scroll;
+
+    background-color: var(--background-color-global);
+}
+
+.content{
+    position: relative;
+    background-color: var(--background-color-global);
+    width: 50%;
+    /* height: 100%; */
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    padding-top: 80px;
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 20px;
+    z-index: 500;
+
+    scrollbar-width: none;
+}
+
+.menuCurtain{
+    position: fixed;
+    width: 400px;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--background-color-global);
+    z-index: 800;
+
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+
+    transform: translate(-100%,0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.menuCurtain.visible{
+    transform: translate(0,0);
+}
+
+.menuCurtain #curtainHeader{
+    position: absolute;
+    width: 100%;
+    height: 400px;
+}
