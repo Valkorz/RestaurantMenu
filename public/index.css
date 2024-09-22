@@ -5,8 +5,8 @@
 
     --foreground-color-global: rgb(255,255,255);
     --foreground-color-global-2: rgb(239, 239, 240);
-    --foreground-color-global-3: rgb(131, 195, 255);
-    --foreground-color-global-4: rgb(105, 157, 255);
+    --foreground-color-global-3: rgb(255, 162, 39);
+    --foreground-color-global-4: #ff3217;
     --background-color-global: whitesmoke;
 
     --text-shadow: 
@@ -21,6 +21,7 @@
 
     overflow-y: scroll;
 
+
 }
 
 
@@ -34,6 +35,82 @@ header{
     box-shadow: 0px 1px 2px rgba(0,0,0,0.25);
     z-index: 1000;
 
+    align-items: center;
+    justify-content: center;
+
+}
+
+h1, h2, h3{
+    z-index: 1010;
+}
+
+.topHeading{
+    position: relative;
+    flex-wrap: wrap;
+    overflow: hidden;
+    height: 400px;
+    z-index: 0;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.topHeading img{
+    position: absolute;
+    image-rendering: crisp-edges;
+    background-color: none;
+    width: 300px;
+    height: 300px;
+
+}
+
+#menu{
+    display: flex;
+    position: absolute;
+
+    width: 32px;
+    height: 32px;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0,0,0,0);
+    border: none;
+    outline: none;
+
+    left: 2%
+}
+
+#menu:hover{
+    cursor: pointer;
+}
+
+#logotext{
+    position: absolute;
+    width: 120px;
+    height: 60px;
+
+    left: 90%;
+}
+
+.expense{
+    display: flex;
+    position: absolute;
+    height: 70px;
+    width: 200px;
+
+    border-radius: 10%;
+    background-color:#fc9331;
+
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    font-size: large;
+
+}
+
+.expense h2{
+    color: #000;
 }
 
 hr{
@@ -98,11 +175,11 @@ table{
 }
 
 #priceTable{
-    position: fixed;
+    position: absolute;
     background-color: var(--foreground-color-global-2);
     transform: translate(100%, 0);
 
-    height: 100vh;
+    height: 100%;
     box-shadow: 3px 0px 7px rgba(0,0,0,0.6);
 }
 
@@ -287,6 +364,8 @@ table{
     visibility: hidden;
     display: flex;
     position: fixed;
+    flex-wrap: wrap;
+    gap: 20px;
     width: 100%;
     height: 100px;
     top: 90%;
@@ -310,7 +389,7 @@ table{
 }
 
 .checkoutTab h3{
-    position: absolute;
+    position: relative;
 }
 
 .checkoutTab button{
@@ -328,8 +407,18 @@ table{
     align-items: center;
 }
 
+.parallax{
+    width: 100%;
+    height: 100%;
+    
+    background: linear-gradient(#ffa641, #ff1e00);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 /* For Mobile */
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 1080px) {
     #priceTable{
         visibility: hidden;
     }
@@ -343,7 +432,7 @@ table{
     }
 }
 
-@media screen and (min-width: 751px){
+@media screen and (min-width: 1081px){
     #priceTable{
         transform: translate(100%,0);
         visibility: visible;

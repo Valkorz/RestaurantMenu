@@ -21,29 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(pizzaFlavors => {
             const pizzaContainer = document.getElementById('pizzaContainer');
-
-            pizzaFlavors.forEach(pizza => {
-                const itemCard = document.createElement('div');
-                itemCard.className = 'itemCard';
-                itemCard.setAttribute('img-src', pizza.imgSrc);
-                itemCard.innerHTML = `
-                    <h3 id="name">${pizza.name}</h3>
-                    <img alt=${pizza.name} src=${pizza.imgSrc}>
-                    <div class="itemCardFooter">
-                        <h5 id="description">${pizza.description}<h5>
-                        <h3 id="price">${pizza.price}</h3>
-                    </div>
-                    <button></button>
-                `;
-                pizzaContainer.appendChild(itemCard);
-
-                //Add event listener to each card to allow for functionality;
-
-                const button = itemCard.querySelector('button');
-                button.addEventListener('click', () => {
-                    addToOrder(pizza);
-                })
-            });
+            addCards(pizzaContainer, pizzaFlavors);
         })
         .catch(error => console.error('Error fetching the JSON data:', error));
 
@@ -57,18 +35,63 @@ document.addEventListener('DOMContentLoaded', function() {
     // })
 })
 
+function addCards(targetContainer, items){
+    items.forEach(item => {
+        const itemCard = document.createElement('div');
+        itemCard.className = 'itemCard';
+        itemCard.setAttribute('img-src', item.imgSrc);
+        itemCard.innerHTML = `
+            <h3 id="name">${item.name}</h3>
+            <img alt=${item.name} src=${item.imgSrc}>
+            <div class="itemCardFooter">
+                <h5 id="description">${item.description}<h5>
+                <h3 id="price">R$ ${item.price}</h3>
+            </div>
+            <button></button>
+        `;
+        targetContainer.appendChild(itemCard);
+
+        //Add event listener to each card to allow for functionality;
+
+        const button = itemCard.querySelector('button');
+        button.addEventListener('click', () => {
+            addToOrder(item);
+        })
+    });
+}
+
 //Adds pizza to local storage order.
 function addToOrder(pizza){
     let orderList = JSON.parse(localStorage.getItem('orderList')) || [];
-    orderList.push(pizza);
+    let existingEntry = orderList.find(item => item.id === pizza.id);
+
+    if(existingEntry){
+        existingEntry.count++;
+    } else{
+        pizza.count = 1;
+        orderList.push(pizza);
+    }
+
     localStorage.setItem('orderList', JSON.stringify(orderList));
     updateOrderList();
 }
 
 function removeFromOrder(pizza){
     let orderList = JSON.parse(localStorage.getItem('orderList')) || [];
+    let existingEntry = orderList.find(item => item.id === pizza.id);
+
     try{
-        orderList.pop(pizza);
+
+        if(existingEntry){
+            if(existingEntry.count > 1){
+                existingEntry.count--;
+            }
+            else{
+                orderList.pop(pizza);
+            }
+        } else{
+            orderList.pop(pizza);
+        }
         localStorage.setItem('orderList', JSON.stringify(orderList));
         updateOrderList();
     } catch (exception){
@@ -76,8 +99,16 @@ function removeFromOrder(pizza){
     }
 }
 
+function calculateTotalValue(orderList){
+    return orderList.reduce((total, order) => {
+        const price = parseFloat(order.price) * parseFloat(order.count);
+        return total + price;
+    }, 0).toFixed(2);
+}
+
 function updateOrderList(){
     const orderContainer = document.getElementById('priceTable');
+    const checkoutTab = document.getElementById('checkout');
     orderContainer.innerHTML = '';
 
     let orderList = JSON.parse(localStorage.getItem('orderList')) || [];
@@ -87,7 +118,7 @@ function updateOrderList(){
         checkoutItem.innerHTML = `
             <img src="${pizza.imgSrc}">
             <h5>${pizza.name}</h5>
-            <div id="count">1</div>
+            <div id="count">${pizza.count}</div>
             <button>
                 <img src="media/icons/cancel.png">
             </button>
@@ -98,4 +129,10 @@ function updateOrderList(){
         });
         orderContainer.appendChild(checkoutItem);
     })
+    
+    let total = calculateTotalValue(orderList);
+    const totalValue = checkoutTab.querySelector('h4');
+    const headingTotalValue = document.getElementById('headingTotalValue');
+    totalValue.textContent = `R$ ${total}`;
+    headingTotalValue.textContent = `R$ ${total}`;
 }
