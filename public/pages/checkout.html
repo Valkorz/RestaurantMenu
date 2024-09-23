@@ -15,13 +15,19 @@
 </head>
 
 <body>
-
+    <audio id="bgm" loop>
+        <source src="../media/music/bgm.mp3" type="audio/mpeg">
+    </audio>
 
     <header>
-        <button id="menu">
+        <button id="menu" class="headerButton">
             <img src="../media/icons/menu.png">
         </button>
         <img src="../media/icons/logotext.png" id="logotext">
+
+        <button id="sound" class="headerButton">
+            <img src="../media/icons/volume.png">
+        </button>
     </header>
 
     <div class="menuCurtain"></div>
@@ -29,7 +35,11 @@
     </div>
 
     <div class="bodyContent">
-        <div class="content"></div>
+        <div class="content">
+            <h1 id="emptyOrderMessage">Pedido vazio!</h1>
+            <table>
+            </table>
+        </div>
     </div>
 
     <script src="checkout.js"></script>

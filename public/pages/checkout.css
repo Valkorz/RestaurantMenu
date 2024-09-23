@@ -55,6 +55,25 @@ header{
 
 }
 
+hr{
+    width: 100vw;
+    height: 1px;
+    background-color: rgba(0,0,0,0.6);
+}
+
+table, th, td{
+    border: 1px solid black;
+    font-family: "Roboto Mono";
+}
+td {
+    text-align: center;
+    vertical-align: center; 
+}
+
+table{
+    width: 50%;
+}
+
 h1, h2{
     z-index: 1010;
     font-family: 'Bebas Neue', sans-serif;
@@ -74,7 +93,11 @@ h4, h5, p, li{
     font-size: medium;
 }
 
-#menu{
+#emptyOrderMessage{
+    visibility: hidden;
+}
+
+.headerButton{
     display: flex;
     position: absolute;
 
@@ -91,8 +114,12 @@ h4, h5, p, li{
     left: 2%;
 }
 
-#menu:hover{
+.headerButton:hover{
     cursor: pointer;
+}
+
+#sound{
+    left: 6%
 }
 
 #logotext{
@@ -118,7 +145,7 @@ h4, h5, p, li{
 .content{
     position: relative;
     background-color: var(--background-color-global);
-    width: 50%;
+    width: 100%;
     /* height: 100%; */
     overflow-x: hidden;
     overflow-y: scroll;
@@ -127,7 +154,7 @@ h4, h5, p, li{
 
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
     gap: 20px;
     z-index: 500;

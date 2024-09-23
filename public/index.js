@@ -3,6 +3,8 @@
 
 //handle custom properties of the item card class
 document.addEventListener('DOMContentLoaded', function() {
+    backgroundAudio();
+
     localStorage.removeItem('orderList');
     const checkout = document.getElementById('checkout');
     const checkoutTab = document.getElementById('priceTable');
@@ -174,4 +176,35 @@ function updateOrderList(){
     const headingTotalValue = document.getElementById('headingTotalValue');
     totalValue.textContent = `R$ ${total}`;
     headingTotalValue.textContent = `R$ ${total}`;
+}
+
+function backgroundAudio(){
+    const audio = document.getElementById('bgm');
+    const playButton = document.getElementById('sound');
+
+    playButton.addEventListener('click', function() {
+        audio.play().then(() => {
+            localStorage.setItem('audioPlaying', 'true');
+        }).catch(error => {
+            console.error('Error playing audio:', error);
+        });
+    });
+
+    // Check if audio was previously playing
+    if (localStorage.getItem('audioPlaying') === 'true') {
+        audio.play().catch(error => {
+            console.error('Error playing audio:', error);
+        });
+    }
+
+    // Add event listener to play audio
+    audio.addEventListener('play', function() {
+        localStorage.setItem('audioPlaying', 'true');
+    });
+
+    // Add event listener to pause audio
+    audio.addEventListener('pause', function() {
+        localStorage.setItem('audioPlaying', 'false');
+        playButton.style.backgroundImage = 'url(media/icons/mute.png)';
+    });
 }
